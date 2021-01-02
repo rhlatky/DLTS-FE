@@ -1,0 +1,8 @@
+// Define your variable overrides here
+@import 'src/styles/variables';
+
+// Bootstrap theme
+@import 'node_modules/bootstrap/scss/bootstrap';
+
+// General style overrides and custom classes
+@import 'src/styles/styles';
