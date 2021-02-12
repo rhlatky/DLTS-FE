@@ -1,4 +1,5 @@
 import './echarts';
+import './font-awesome';
 import 'bootstrap';
 
 export {default as store} from './store';

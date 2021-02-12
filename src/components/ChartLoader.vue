@@ -76,8 +76,7 @@ export default {
 			state.options.title.text = data.header.name;
 			state.header = data.header;
 			state.options.series[0].data = data.data;
-			// eslint-disable-next-line no-negated-condition
-			if (data.fittedData !== null && data.fittedData.length > 0) {
+			if (data.fittedData && data.fittedData.length > 0) {
 				state.options.series[1].data = data.fittedData;
 			}
 		};

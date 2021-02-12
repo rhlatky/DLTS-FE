@@ -1,52 +1,51 @@
 <template>
-	<div class="hello">
-		<div class="mb-3">
-			<h1>{{ msg }}</h1>
-			<button class="btn btn-success" @click="increment">Increase count</button>
-			{{ count }}
-			<button class="btn btn-danger" @click="reset">Reset</button>
-		</div>
-		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col-3 mb-3">
-					<input v-model="state.transientId" min="1" type="number" class="form-control align-self-center">
+	<div class="container-fluid w-100">
+		<div class="row justify-content-center">
+			<div class="col-3 mb-3">
+				<div class="mb-2">
+					<button class="btn btn-success" @click="increment">Increase count</button>
+					{{ count }}
+					<button class="btn btn-danger" @click="reset">Reset</button>
+				</div>
+				<input v-model="state.transientId" min="1" type="number" class="form-control mb-2">
+				<div>
+					<button class="btn btn-primary" @click="addItem">Add an item dynamically</button>
+					<div>
+						<input v-model="state.draggable" type="checkbox"> Draggable
+						<input v-model="state.resizable" type="checkbox"> Resizable
+					</div>
 				</div>
 			</div>
-			<button class="btn btn-primary" @click="addItem">Add an item dynamically</button>
-			<div>
-				<input v-model="state.draggable" type="checkbox"> Draggable
-				<input v-model="state.resizable" type="checkbox"> Resizable
-			</div>
-			<div v-if="state.transientLoading" class="d-flex justify-content-center">
-				<div class="spinner-border" role="status">
-					<span class="visually-hidden">Loading...</span>
-				</div>
-			</div>
-			<p v-else>
-				{{ state.transient }}
-			</p>
-			<grid-layout
-				:layout.sync="state.layout"
-				:col-num="12"
-				:row-height="30"
-				:is-draggable="state.draggable"
-				:is-resizable="state.resizable"
-				:vertical-compact="true"
-				:use-css-transforms="true">
-				<grid-item
-					v-for="item in state.layout"
-					:key="item.i"
-					:static="item.static"
-					:x="item.x"
-					:y="item.y"
-					:w="item.w"
-					:h="item.h"
-					:i="item.i">
-					<graph-loader :transient-id="item.transientId" />
-					<span class="remove" @click="removeItem(item.i)">x</span>
-				</grid-item>
-			</grid-layout>
 		</div>
+		<div v-if="state.transientLoading" class="d-flex justify-content-center">
+			<div class="spinner-border" role="status">
+				<span class="visually-hidden">Loading...</span>
+			</div>
+		</div>
+		<p v-else>
+			{{ state.transient }}
+		</p>
+		<grid-layout
+			:layout.sync="state.layout"
+			:col-num="12"
+			:row-height="30"
+			:is-draggable="state.draggable"
+			:is-resizable="state.resizable"
+			:vertical-compact="true"
+			:use-css-transforms="true">
+			<grid-item
+				v-for="item in state.layout"
+				:key="item.i"
+				:static="item.static"
+				:x="item.x"
+				:y="item.y"
+				:w="item.w"
+				:h="item.h"
+				:i="item.i">
+				<chart-loader :transient-id="item.transientId" />
+				<span class="remove" @click="removeItem(item.i)">x</span>
+			</grid-item>
+		</grid-layout>
 	</div>
 </template>
 
@@ -54,20 +53,14 @@
 import {GridItem, GridLayout} from 'vue-grid-layout';
 import {onMounted, reactive} from '@vue/composition-api';
 import {useActions, useGetters} from 'vuex-composition-helpers';
-import GraphLoader from './ChartLoader.vue';
+import ChartLoader from './ChartLoader.vue';
 
 export default {
 	name: 'HelloWorld',
 	components: {
-		GraphLoader,
+		ChartLoader,
 		GridLayout,
 		GridItem
-	},
-	props: {
-		msg: {
-			type: String,
-			default: ''
-		}
 	},
 	// eslint-disable-next-line max-lines-per-function
 	setup() {
@@ -131,9 +124,9 @@ export default {
 			state.layout.push({
 				x: (state.layout.length * 2) % (state.colNum || 12),
 				y: state.layout.length + (state.colNum || 12),
-				w: 2,
-				h: 2,
-				i: state.index,
+				w: 3,
+				h: 8,
+				i: `${state.index}`,
 				transientId: parseInt(state.transientId, 10)
 			});
 			// Increment the counter to ensure key is always unique.
