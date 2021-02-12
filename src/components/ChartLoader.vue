@@ -7,7 +7,6 @@
 <script>
 import {onMounted, reactive} from '@vue/composition-api';
 import AppLoading from './AppLoading';
-import axios from '../plugins/axios';
 
 export default {
 	name: 'ChartLoader',
@@ -18,7 +17,8 @@ export default {
 			required: true
 		}
 	},
-	setup(props) {
+	setup(props, {root}) {
+		const {axios} = root.$options;
 		const state = reactive({
 			loading: false,
 			header: {},
