@@ -13,17 +13,21 @@
 				<new-measurements />
 			</div>
 			<div class="col-12 col-lg-6">
-				<new-measurements />
+				<new-dashboards />
 			</div>
 		</div>
 	</div>
 </template>
 
 <script>
+import NewDashboards from '../components/Home/NewDashboards';
 import NewMeasurements from '../components/Home/NewMeasurements';
 
 export default {
 	name: 'Home',
-	components: {NewMeasurements}
+	components: {
+		NewDashboards,
+		NewMeasurements
+	}
 };
 </script>
