@@ -6,6 +6,7 @@ import 'echarts/lib/component/dataZoom';
 
 import 'echarts/lib/chart/line';
 import 'echarts/lib/chart/scatter';
+import 'zrender/lib/svg/svg';
 
 import ECharts from 'vue-echarts';
 import Vue from 'vue';

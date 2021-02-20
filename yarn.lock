@@ -909,6 +909,13 @@
   optionalDependencies:
     "@interactjs/interact" "1.10.2"
 
+"@interactjs/actions@^1.9.20":
+  version "1.10.3"
+  resolved "https://registry.yarnpkg.com/@interactjs/actions/-/actions-1.10.3.tgz#eb92d45079ccad9c5c4e407f0cdd29ec318ebebf"
+  integrity sha512-Nvs0w1fk1LTKGyz091xpZMohM51ZxthSldxX+e6Jx56JlP3l6e+AnehMUxmkydu1tCipXafIRlcLulYtEEHeFA==
+  optionalDependencies:
+    "@interactjs/interact" "1.10.3"
+
 "@interactjs/arrange@1.10.2":
   version "1.10.2"
   resolved "https://registry.yarnpkg.com/@interactjs/arrange/-/arrange-1.10.2.tgz#e6d93c5c01261d1306d46412095289671e1be4d2"
@@ -928,6 +935,13 @@
   optionalDependencies:
     "@interactjs/interact" "1.10.2"
 
+"@interactjs/auto-start@^1.9.20":
+  version "1.10.3"
+  resolved "https://registry.yarnpkg.com/@interactjs/auto-start/-/auto-start-1.10.3.tgz#3c1c7edf282ec6132f39cda80dd01124e3c7ab10"
+  integrity sha512-LRjCZDY0apfSOM3yRsj71cIZ93XIHLscT88vBId9YStmaHaTDN4QM0/C2ndUFBEdmhrgPBJI0xGwyZkSdIfFvw==
+  optionalDependencies:
+    "@interactjs/interact" "1.10.3"
+
 "@interactjs/clone@1.10.2":
   version "1.10.2"
   resolved "https://registry.yarnpkg.com/@interactjs/clone/-/clone-1.10.2.tgz#b110a1d9cfd204684c42af776847b3f9acbbae53"
@@ -937,6 +951,11 @@
   version "1.10.2"
   resolved "https://registry.yarnpkg.com/@interactjs/core/-/core-1.10.2.tgz#00bc9c9ea9f50c1e345ab96deb750881e7ff0e6a"
   integrity sha512-SA5KRGo+gFJOhBj1Z2dLHhAf0/2nyHNd4SQ460aIQ3jj/QhqbJW6kGzmh7hBa2FzVGgxLhcQu7NZaP4rnDfUNw==
+
+"@interactjs/core@1.10.3":
+  version "1.10.3"
+  resolved "https://registry.yarnpkg.com/@interactjs/core/-/core-1.10.3.tgz#ee4a01584820ccc491ad1a65296e00ecf1a7d50f"
+  integrity sha512-AWhh8v5A5xKA0iSbqMKFDIhbG+I4khrALB5EPnaKS04ai+1jGumCafolwlZjGrmdiZoz9tcwwvtayGBwSxFzBw==
 
 "@interactjs/dev-tools@1.10.2", "@interactjs/dev-tools@^1.10.2":
   version "1.10.2"
@@ -969,6 +988,15 @@
     "@interactjs/core" "1.10.2"
     "@interactjs/types" "1.10.2"
     "@interactjs/utils" "1.10.2"
+
+"@interactjs/interact@1.10.3", "@interactjs/interact@^1.9.20":
+  version "1.10.3"
+  resolved "https://registry.yarnpkg.com/@interactjs/interact/-/interact-1.10.3.tgz#8777abaccf1a62f23f56dab70ddf6f605670e26f"
+  integrity sha512-mDGUjSICG2/ghqYLHDhpjywmmRjgfZ5O0rp7ozxZSYZzb53F9MuifEcVmoUoRXNWkukdC3+USpCvIEOrDMPaRw==
+  dependencies:
+    "@interactjs/core" "1.10.3"
+    "@interactjs/types" "1.10.3"
+    "@interactjs/utils" "1.10.3"
 
 "@interactjs/interactjs@^1.10.2":
   version "1.10.2"
@@ -1044,10 +1072,20 @@
   resolved "https://registry.yarnpkg.com/@interactjs/types/-/types-1.10.2.tgz#45a74d019f9b3e8fccd3ccc288b55bcf510106bc"
   integrity sha512-l0T1bU8OHRv716ztQOYwP+K7b/lA76C0T3r/cdabbUv6CKeAFdFRRFlmNxYOM36SxMGWAiq5VWrN3SeXlB7Fow==
 
+"@interactjs/types@1.10.3":
+  version "1.10.3"
+  resolved "https://registry.yarnpkg.com/@interactjs/types/-/types-1.10.3.tgz#1f22a4b369b1cac7fd4d1d57ced586aa6f836553"
+  integrity sha512-O4j/Iq8Xko0cv4WfNFMciVVSw1xROXaegd1hwZVCliuIA70b59iU++i3SyzygV4ZT1MuLjqtSUd0kHm5va+a8A==
+
 "@interactjs/utils@1.10.2":
   version "1.10.2"
   resolved "https://registry.yarnpkg.com/@interactjs/utils/-/utils-1.10.2.tgz#d68dd45c9b41baab11acf0ee9686de207d754b63"
   integrity sha512-sOr+pu7XGAN4qv+ikajMo3RJygbkbMLegmx0Tv5Qf6e80sF42FjkmHeMGuV7fL98nwat0VmDiWerOFBnKctXow==
+
+"@interactjs/utils@1.10.3":
+  version "1.10.3"
+  resolved "https://registry.yarnpkg.com/@interactjs/utils/-/utils-1.10.3.tgz#8bdde33d9e2434a6b44f8b6a70fd0dfd9c386713"
+  integrity sha512-HrBPT7xRVSG4e0sxNmtHEeYG/atqDZrWmdvuFVcgehR2LlLR0yjllvH+X6FtILXiSbBKJmj00N/yorDz9FzVLA==
 
 "@interactjs/vue@1.10.2":
   version "1.10.2"
@@ -8280,6 +8318,18 @@ static-extend@^0.1.1:
   resolved "https://registry.yarnpkg.com/statuses/-/statuses-1.5.0.tgz#161c7dac177659fd9811f43771fa99381478628c"
   integrity sha1-Fhx9rBd2Wf2YEfQ3cfqZOBR4Yow=
 
+ste-core@^1.7.2:
+  version "1.7.3"
+  resolved "https://registry.yarnpkg.com/ste-core/-/ste-core-1.7.3.tgz#91cba0aa606827c9944661abfb50740ef1a5ef3e"
+  integrity sha512-DP3BMV+NkTP1ayvIOgNkp+sbbBVPWhuYR9xuybIckL/lHt+fIZUaisFmI+0UumaGTDWLTmk6Ybck023dKvwGiw==
+
+ste-simple-events@^1.6.13:
+  version "1.7.3"
+  resolved "https://registry.yarnpkg.com/ste-simple-events/-/ste-simple-events-1.7.3.tgz#0a2aec72c89742011767eb1574c35bd598180d5d"
+  integrity sha512-QgtEQE0tG4BEkn+WWewOwz4GYvZQrPPczhkzxMmh5KKMsIwbb/kryH71/nbKEUJ5/FZUwXqsMLLM2Ugrg08EvQ==
+  dependencies:
+    ste-core "^1.7.2"
+
 stream-browserify@^2.0.1:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/stream-browserify/-/stream-browserify-2.0.2.tgz#87521d38a44aa7ee91ce1cd2a47df0cb49dd660b"
@@ -9017,6 +9067,13 @@ vue-echarts@^5.0.0-beta.0:
     lodash "^4.17.15"
     resize-detector "^0.1.10"
 
+vue-element-resize-detector@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/vue-element-resize-detector/-/vue-element-resize-detector-1.0.6.tgz#c0aa8ccb32d93892e32a16a9b3049ce06c1d2339"
+  integrity sha512-1vh9GtSFcwEJJEGkSZfYV3kKYqCoDGmtlOZhLcy7Itt0f5mK4V9Pa/r/9qmRa031VUIdO0WTXsHrNQnY9A/+Gw==
+  dependencies:
+    element-resize-detector "^1.2.1"
+
 vue-eslint-parser@^7.0.0:
   version "7.3.0"
   resolved "https://registry.yarnpkg.com/vue-eslint-parser/-/vue-eslint-parser-7.3.0.tgz#894085839d99d81296fa081d19643733f23d7559"
@@ -9066,6 +9123,16 @@ vue-loader@^15.9.2:
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
 
+"vue-responsive-dash@https://github.com/rhlatky/vue-responsive-dash.git":
+  version "0.5.0"
+  resolved "https://github.com/rhlatky/vue-responsive-dash.git#7b8efdc03cbdc31c8172b0e3546251918ab63c97"
+  dependencies:
+    "@interactjs/actions" "^1.9.20"
+    "@interactjs/auto-start" "^1.9.20"
+    "@interactjs/interact" "^1.9.20"
+    ste-simple-events "^1.6.13"
+    vue-element-resize-detector "^1.0.6"
+
 vue-router@^3.2.0:
   version "3.4.9"
   resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-3.4.9.tgz#c016f42030ae2932f14e4748b39a1d9a0e250e66"
@@ -9092,7 +9159,7 @@ vue-template-es2015-compiler@^1.9.0:
   resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.9.1.tgz#1ee3bc9a16ecbf5118be334bb15f9c46f82f5825"
   integrity sha512-4gDntzrifFnCEvyoO8PqyJDmguXgVPxKiIxrBKjIowvL9l+N66196+72XVYR8BBf1Uv1Fgt3bGevJ+sEmxfZzw==
 
-vue@^2.6.11:
+vue@^2.6.12:
   version "2.6.12"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.12.tgz#f5ebd4fa6bd2869403e29a896aed4904456c9123"
   integrity sha512-uhmLFETqPPNyuLLbsKz6ioJ4q7AZHzD8ZVFNATNyICSZouqP2Sz0rotWQC8UNBF6VGSCs5abnKJoStA6JbCbfg==

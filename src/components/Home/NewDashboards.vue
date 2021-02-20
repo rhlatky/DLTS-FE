@@ -16,7 +16,7 @@
 						<tr>
 							<th>Name</th>
 							<th>Owner</th>
-							<th>widgetCount</th>
+							<th>Widgets</th>
 							<th>Created</th>
 						</tr>
 					</thead>
@@ -27,7 +27,7 @@
 							<td>{{ dashboard.widgetCount }}</td>
 							<td>{{ dashboard.creationTime }}</td>
 							<td>
-								<button class="btn btn-secondary">open</button>
+								<button class="btn btn-secondary" @click="$router.push({name: 'Dashboard', params: {id: dashboard.id}})">Open</button>
 							</td>
 						</tr>
 					</tbody>
@@ -51,7 +51,7 @@
 							<input v-model="state.name" type="text" placeholder="Dashboard name" class="form-control">
 						</div>
 						<div class="mb-3">
-							<input v-model="state.measurementId" type="number" min="0" class="form-control">
+							<input v-model="state.measurementId" type="number" min="1" class="form-control">
 						</div>
 					</div>
 					<div class="modal-footer">
@@ -82,6 +82,11 @@ export default {
 			loading: false
 		});
 
+		const reset = () => {
+			state.name = '';
+			state.measurementId = 1;
+		};
+
 		onMounted(() => {
 			state.loading = true;
 			axios.get('dashboard')
@@ -96,16 +101,10 @@ export default {
 				});
 
 			createDashboardModal = document.getElementById('create-dashboard-modal');
-			createDashboardModal.addEventListener('hidden.bs.modal', () => {
-				state.dashboardName = '';
-				state.measurementId = 1;
-			});
+			createDashboardModal.addEventListener('hidden.bs.modal', reset);
 		});
 		onUnmounted(() => {
-			createDashboardModal.removeEventListener('hidden.bs.modal', () => {
-				state.dashboardName = '';
-				state.measurementId = 1;
-			});
+			createDashboardModal.removeEventListener('hidden.bs.modal', reset);
 		});
 
 		const createDashboard = () => {
