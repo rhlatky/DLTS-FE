@@ -34,12 +34,12 @@
 <script>
 import {onMounted, reactive} from '@vue/composition-api';
 import AppLoading from '../AppLoading';
-import axios from '../../plugins/axios';
 
 export default {
 	name: 'NewMeasurements',
 	components: {AppLoading},
-	setup() {
+	setup(props, {root}) {
+		const {axios} = root.$options;
 		const state = reactive({
 			measurements: [],
 			loading: false
