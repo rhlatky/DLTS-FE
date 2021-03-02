@@ -54,7 +54,7 @@
 
 <script>
 import {onMounted, onUnmounted, reactive, toRefs, watchEffect} from '@vue/composition-api';
-import AppLoading from '../AppLoading';
+import AppLoading from '../Design/AppLoading';
 import {Modal} from 'bootstrap';
 
 export default {

@@ -66,7 +66,7 @@
 
 <script>
 import {onMounted, onUnmounted, reactive} from '@vue/composition-api';
-import AppLoading from '../AppLoading';
+import AppLoading from '../Design/AppLoading';
 
 export default {
 	name: 'NewDashboards',

@@ -1,23 +1,18 @@
 <template>
 	<div class="container-fluid w-100">
 		<app-loading :loading="state.dashboardLoading">
-			<div class="row justify-content-center">
-				<div class="col-3 mb-3">
-					<input v-model="state.transientId" min="1" type="number" class="form-control mb-2">
-					<div>
-						<button class="btn btn-primary" @click="addItem">Add an item dynamically</button>
-						<div>
-							<input v-model="state.draggable" type="checkbox"> Draggable
-							<input v-model="state.resizable" type="checkbox"> Resizable
-						</div>
-					</div>
-				</div>
-			</div>
 			<div class="row">
 				<div class="col-12">
-					<dash-dashboard :id="'dashExample'" class="w-100 overflow-hidden">
+					<dash-dashboard :id="'dashExample'" class="w-100 overflow-hidden" @currentBreakpointUpdated="state.breakpoint = $event">
 						<dash-layout v-for="layout in state.dLayouts" :key="layout.breakpoint" v-bind="layout">
-							<dash-item v-for="item in layout.items" :key="item.id" v-bind.sync="item">
+							<dash-item
+								v-for="item in layout.items"
+								:key="item.id"
+								v-bind.sync="item"
+								@moveStart="setComparisonLayout"
+								@resizeStart="setComparisonLayout"
+								@moving="widgetInteractionHandler"
+								@resizing="widgetInteractionHandler">
 								<chart-loader-new class="content" :widget-id="item.id" />
 							</dash-item>
 						</dash-layout>
@@ -40,7 +35,7 @@
 <script>
 import {Dashboard as DashDashboard, DashItem, DashLayout} from 'vue-responsive-dash';
 import {computed, onMounted, reactive} from '@vue/composition-api';
-import AppLoading from '../components/AppLoading';
+import AppLoading from '../components/Design/AppLoading';
 import ChartLoaderNew from '../components/ChartLoaderNew';
 import WidgetModal from '../components/Dashboard/WidgetModal';
 
@@ -68,10 +63,11 @@ export default {
 			closeModal: false,
 			measurementIds: computed(() => state.dashboard.measurements?.map((measurement) => measurement.id) ?? []),
 			dashboard: {},
-			transientId: 1,
 			dashboardLoading: true,
-			transient: {},
-			transients: [],
+			widgetInteract: false,
+			interactionTimeout: null,
+			oldLayout: null,
+			breakpoint: '',
 			dLayouts: [
 				{
 					breakpoint: 'lg',
@@ -111,43 +107,60 @@ export default {
 			axios.get(`dashboard/${props.id}`)
 				.then(({data}) => {
 					state.dLayouts.forEach((layout) => {
-						layout.items = data.layout[layout.breakpoint];
+						layout.items = layout.items.concat(data.layout[layout.breakpoint]);
 					});
 					state.dashboard = data;
+					console.log(state.activeLayout);
 				})
 				.catch(() => {
 					console.log('get dashboard error');
 				})
 				.finally(() => {
 					state.dashboardLoading = false;
-					state.index = state.dLayouts[0].items.length;
 				});
 		});
 
-		const addItem = () => {
-			Object.keys(state.layouts).forEach((key) => {
-				state.layouts[key].push({
-					x: 0,
-					y: state.dLayouts[0].items.length,
-					width: 3,
-					height: 3,
-					transientId: parseInt(state.transientId, 10)
-				});
-			});
-			// Increment the counter to ensure key is always unique.
-		};
-
 		const removeItem = (val) => {
+			// TODO: Zavolat api a zmazat
 			const index = state.layout.map((item) => item.i).indexOf(val);
 			state.layout.splice(index, 1);
-		};
-		const breakpointChangedEvent = (newBreakpoint) => {
-			state.layout = state.layouts[newBreakpoint];
 		};
 		const addWidgetToLayout = (widgetLayout) => {
 			state.dLayouts.forEach((layout) => {
 				layout.items.push(widgetLayout[layout.breakpoint]);
 			});
+		};
+		const setComparisonLayout = () => {
+			if (state.oldLayout === null) {
+				state.oldLayout = JSON.parse(JSON.stringify(state.dLayouts.filter((layout) => layout.breakpoint === state.breakpoint)[0]));
+			}
+		};
+		const updateWidgetLayout = (widget) => {
+			axios.post('widget/update-widget', {
+				id: widget.id,
+				breakpoint: state.oldLayout.breakpoint,
+				layout: widget
+			});
+		};
+		const widgetInteractionHandler = () => {
+			clearTimeout(state.interactionTimeout);
+			state.interactionTimeout = setTimeout(() => {
+				const [currentLayout] = state.dLayouts.filter((layout) => layout.breakpoint === state.oldLayout.breakpoint);
+				if (JSON.stringify(state.oldLayout) === JSON.stringify(currentLayout)) {
+					return;
+				}
+				const changes = [];
+				for (let i = 0; i < state.oldLayout.items.length; i++) {
+					const widget = currentLayout.items[i];
+					if (JSON.stringify(widget) !== JSON.stringify(state.oldLayout.items[i])) {
+						changes.push(widget);
+					}
+				}
+				changes.forEach((widget) => {
+					updateWidgetLayout(widget);
+				});
+				state.oldLayout = null;
+			}, 1500);
 		};
 		const createWidget = (widget) => {
 			state.dLayouts.forEach((layout) => {
@@ -166,13 +179,12 @@ export default {
 				});
 		};
 
-
 		return {
 			state,
 			removeItem,
-			addItem,
-			breakpointChangedEvent,
-			createWidget
+			createWidget,
+			setComparisonLayout,
+			widgetInteractionHandler
 		};
 	}
 };

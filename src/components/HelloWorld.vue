@@ -1,5 +1,10 @@
 <template>
 	<div class="container-fluid w-100">
+		<div class="row my-5 justify-content-center">
+			<div class="col-6">
+				<app-input-filter />
+			</div>
+		</div>
 		<div class="row justify-content-center">
 			<div class="col-3 mb-3">
 				<div class="mb-2">
@@ -53,11 +58,13 @@
 import {GridItem, GridLayout} from 'vue-grid-layout';
 import {onMounted, reactive} from '@vue/composition-api';
 import {useActions, useGetters} from 'vuex-composition-helpers';
+import AppInputFilter from './Design/AppInputFilter';
 import ChartLoader from './ChartLoader.vue';
 
 export default {
 	name: 'HelloWorld',
 	components: {
+		AppInputFilter,
 		ChartLoader,
 		GridLayout,
 		GridItem

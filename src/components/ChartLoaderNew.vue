@@ -6,7 +6,7 @@
 
 <script>
 import {onMounted, reactive} from '@vue/composition-api';
-import AppLoading from './AppLoading';
+import AppLoading from './Design/AppLoading';
 
 export default {
 	name: 'ChartLoaderNew',
@@ -90,7 +90,6 @@ export default {
 			state.loading = true;
 			axios.get(`widget/${props.widgetId}`)
 				.then(({data}) => {
-					console.log(data);
 					axios.get(`data/${data.selected.object[0]}`)
 						.then((transient) => {
 							distributeData(transient.data);

@@ -13,7 +13,7 @@
 }
 </style>
 <script>
-import AppNavbar from './components/AppNavbar';
+import AppNavbar from './components/Design/AppNavbar';
 export default {
 	name: 'App',
 	components: {AppNavbar}

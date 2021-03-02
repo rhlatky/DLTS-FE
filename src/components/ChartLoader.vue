@@ -6,7 +6,7 @@
 
 <script>
 import {onMounted, reactive} from '@vue/composition-api';
-import AppLoading from './AppLoading';
+import AppLoading from './Design/AppLoading';
 
 export default {
 	name: 'ChartLoader',
